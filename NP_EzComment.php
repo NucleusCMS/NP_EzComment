@@ -5,8 +5,8 @@ class NP_EzComment extends NucleusPlugin
     function getEventList()   { return array();}
     function getName()        { return 'Ez Comment';}
     function getAuthor()      { return 'Taka + shizuki';}
-    function getURL()         { return 'http://japan.nucleuscms.org/wiki/plugins:ezcomment';}
-    function getVersion()     { return '0.33';}
+    function getURL()         { return 'https://github.com/NucleusCMS/NP_EzComment';}
+    function getVersion()     { return '0.4';}
     function getDescription() { return  _NP_EZCOMMENT_DESCRIPTION;}
     function supportsFeature($what) {return in_array($what,array('SqlTablePrefix','SqlApi'));}
 
