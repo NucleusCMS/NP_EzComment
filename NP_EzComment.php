@@ -8,7 +8,7 @@ class NP_EzComment extends NucleusPlugin
     function getURL()         { return 'http://japan.nucleuscms.org/wiki/plugins:ezcomment';}
     function getVersion()     { return '0.33';}
     function getDescription() { return  _NP_EZCOMMENT_DESCRIPTION;}
-    function supportsFeature($what) {return in_array($what,array('SqlTablePrefix'));}
+    function supportsFeature($what) {return in_array($what,array('SqlTablePrefix','SqlApi'));}
 
     function install() {
         $this->createOption('order', _NP_EZCOMMENT_ORDER, 'select', 1, _NP_EZCOMMENT_ORDER_VALUE);
@@ -202,7 +202,7 @@ ___COMMENTFORM__;
         }
 
         $comments = sql_query($query);
-        $viewnum  = mysql_num_rows($comments);
+        $viewnum  = sql_num_rows($comments);
 
         if ($postnum) { // display when exist comment(s)
                 
@@ -221,7 +221,7 @@ ___COMMENTFORM__;
                        . "</a> ] ---\n<ul>\n";
             echo $printData;
 
-            while ($row = mysql_fetch_object($comments)) {
+            while ($row = sql_fetch_object($comments)) {
                 $body = strip_tags($row->cbody);
                 $body = str_replace("\r\n", "\r", $body); 
                 $body = str_replace("\r",   "\n", $body); 
@@ -248,7 +248,7 @@ ___COMMENTFORM__;
         /* comment-list-footer */
             echo "</ul>\n</div>\n";
 
-            mysql_free_result($comments);
+            sql_free_result($comments);
         }
     }
 // LIST END -----------------------------------------
